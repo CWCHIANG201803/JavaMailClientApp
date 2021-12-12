@@ -3,6 +3,7 @@ package com.chaowei.view;
 import com.chaowei.EmailManager;
 import com.chaowei.controller.BaseController;
 import com.chaowei.controller.LoginWindowController;
+import com.chaowei.controller.MainWindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +22,10 @@ public class ViewFactory {
         System.out.println("show login window called");
         BaseController controller = new LoginWindowController(emailManager, this, "LoginWindow.fxml");
 
+        initializeStage(controller);
+    }
 
+    private void initializeStage(BaseController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(controller.getFxmlName()));
         fxmlLoader.setController(controller);
         Parent parent;
@@ -36,4 +40,16 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void showMainWindow() {
+        System.out.println("main window called");
+        BaseController controller = new MainWindowController(emailManager, this,"MainWindow.fxml");
+        initializeStage(controller);
+
+    }
+
+    public void closeStage(Stage stageToClose){
+        stageToClose.close();
+    }
+
 }

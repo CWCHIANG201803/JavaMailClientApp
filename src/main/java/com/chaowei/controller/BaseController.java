@@ -4,8 +4,8 @@ import com.chaowei.EmailManager;
 import com.chaowei.view.ViewFactory;
 
 public abstract class BaseController {
-    private EmailManager emailManager;
-    private ViewFactory viewFactory;
+    protected EmailManager emailManager;
+    protected ViewFactory viewFactory;
 
     public BaseController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
         this.emailManager = emailManager;
