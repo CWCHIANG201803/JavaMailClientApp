@@ -8,7 +8,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.chaowei.controller.LoginWindowController"
             prefHeight="325.0" prefWidth="510.0">
     <children>
         <Button fx:id="loginButton" layoutX="195.0" layoutY="244.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="55.0" prefWidth="121.0" text="Login" />

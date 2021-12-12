@@ -15,5 +15,7 @@ public abstract class BaseController {
 
     private String fxmlName;
 
-
+    public String getFxmlName() {
+        return fxmlName;
+    }
 }
