@@ -12,6 +12,7 @@ public class ViewFactory {
     private final ArrayList<Stage> activesStages;
     private ViewInitializer viewInitializer;
     private boolean mainViewInitialized = false;
+    private BaseController controller = null;
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
@@ -24,6 +25,11 @@ public class ViewFactory {
         this.viewInitializer = viewInitializer;
     }
 
+    public ViewFactory(EmailManager emailManager, ViewInitializer viewInitializer, BaseController controller){
+        this(emailManager, viewInitializer);
+        this.controller = controller;
+    }
+
     public boolean isMainViewInitialized(){
         return mainViewInitialized;
     }
@@ -33,11 +39,36 @@ public class ViewFactory {
     private FontSize fontSize = FontSize.MEDIUM;
 
     public void showLoginWindow(){
-        System.out.println("show login window called");
-        BaseController controller = new LoginWindowController(emailManager, this, "LoginWindow.fxml");
+        this.controller = new LoginWindowController(emailManager, this, "LoginWindow.fxml");
         Stage stage = viewInitializer.initializeStage(controller);
         activesStages.add(stage);
     }
+
+    public void showMainWindow(){
+        this.controller = new MainWindowController(emailManager, this, "MainWindow.fxml");
+        Stage stage = viewInitializer.initializeStage(controller);
+        activesStages.add(stage);
+        mainViewInitialized = true;
+    }
+
+    public void showComposeMessageWindow(){
+        this.controller = new ComposeMessageController(emailManager, this, "ComposeMessageWindow.fxml");
+        Stage stage = viewInitializer.initializeStage(controller);
+        activesStages.add(stage);
+    }
+
+    public void showOptionsWindow(){
+        this.controller = new OptionsWindowController(emailManager, this, "OptionsWindow.fxml");
+        Stage stage = viewInitializer.initializeStage(controller);
+        activesStages.add(stage);
+    }
+
+    public void showEmailDetailsWindow(){
+        this.controller = new EmailDetailsController(emailManager, this, "EmailDetailsWindow.fxml");
+        Stage stage = viewInitializer.initializeStage(controller);
+        activesStages.add(stage);
+    }
+
 
     public ColorTheme getColorTheme() {
         return colorTheme;
@@ -53,34 +84,6 @@ public class ViewFactory {
 
     public void setFontSize(FontSize fontSize) {
         this.fontSize = fontSize;
-    }
-
-    public void showMainWindow(){
-        System.out.println("main window called");
-        BaseController controller = new MainWindowController(emailManager, this, "MainWindow.fxml");
-        Stage stage = viewInitializer.initializeStage(controller);
-        activesStages.add(stage);
-        mainViewInitialized = true;
-    }
-
-    public void showComposeMessageWindow(){
-        System.out.println("composeMessage window called");
-        BaseController controller = new ComposeMessageController(emailManager, this, "ComposeMessageWindow.fxml");
-        Stage stage = viewInitializer.initializeStage(controller);
-        activesStages.add(stage);
-    }
-
-    public void showOptionsWindow(){
-        System.out.println("Options window called");
-        BaseController controller = new OptionsWindowController(emailManager, this, "OptionsWindow.fxml");
-        Stage stage = viewInitializer.initializeStage(controller);
-        activesStages.add(stage);
-    }
-
-    public void showEmailDetailsWindow(){
-        BaseController controller = new EmailDetailsController(emailManager, this, "EmailDetailsWindow.fxml");
-        Stage stage = viewInitializer.initializeStage(controller);
-        activesStages.add(stage);
     }
 
     public void closeStage(Stage stageToClose){
