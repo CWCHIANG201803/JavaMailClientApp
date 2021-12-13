@@ -6,11 +6,15 @@ module com.chaowei.java_mail_client {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
     requires javafx.web;
+    requires java.mail;
+    requires java.desktop;
+    requires java.activation;
 
-    opens com.chaowei to javafx.fxml;
+    opens com.chaowei;
+    opens com.chaowei.view;
+    opens com.chaowei.controller;
+    opens com.chaowei.model;
     exports com.chaowei;
-    opens com.chaowei.view to javafx.fxml;
     exports com.chaowei.view;
     exports com.chaowei.controller;
-    opens com.chaowei.controller to javafx.fxml;
 }
