@@ -1,4 +1,4 @@
-module com.chaowei.java_mail_client {
+module com.chaowei.javamailclientapp {
     requires javafx.controls;
     requires javafx.fxml;
 

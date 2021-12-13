@@ -80,10 +80,5 @@ public class LoginWindowController extends BaseController implements Initializab
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // very bad habit!!!
-        emailAddressField.setText("cwchingprojectdev@gmail.com");
-        passwordField.setText("e787e8Pass");
     }
-
-
 }

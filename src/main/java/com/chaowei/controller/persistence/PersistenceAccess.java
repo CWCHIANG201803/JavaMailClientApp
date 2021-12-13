@@ -21,7 +21,7 @@ public class PersistenceAccess {
             decodePasswords(persistedList);
             resultList.addAll(persistedList);
         } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return resultList;
     }
