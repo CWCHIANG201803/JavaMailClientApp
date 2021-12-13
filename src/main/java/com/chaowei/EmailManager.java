@@ -5,6 +5,8 @@ import com.chaowei.controller.services.FolderUpdaterService;
 import com.chaowei.model.EmailAccount;
 import com.chaowei.model.EmailMessage;
 import com.chaowei.model.EmailTreeItem;
+import com.chaowei.view.ColorTheme;
+import com.chaowei.view.FontSize;
 import com.chaowei.view.IconResolver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +18,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmailManager {
+
+    private ColorTheme theme = ColorTheme.DEFAULT;
+    private FontSize fontSize = FontSize.MEDIUM;
+
+    //Themes handling:
+    public ColorTheme getTheme() {
+        return theme;
+    }
+    public void setTheme(ColorTheme theme) {
+        this.theme = theme;
+    }
+    public FontSize getFontSize() {
+        return fontSize;
+    }
+    public void setFontSize(FontSize fontSize) {
+        this.fontSize = fontSize;
+    }
 
     private EmailMessage selectedMessage;
 
